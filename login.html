@@ -1,42 +1,54 @@
 <html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="/static/login.css">
-</head>
-<body>
-	<h1>Steps Make the Way</h1>
-	
-    <div id="login">
-		<form action="/login" method="POST">
-			<table>
-				<tr>
-					<td><label id="txtusername">Username:</label>
-					<td><input type="text" id="txtusername" name="txtusername" required>
-				</tr>
-				<tr>
-					<td><label id="txtpassword">Password:</label>
-					<td><input type="password" id="txtpassword" name="txtpassword" required>
-				</tr>
-				<tr>
-					<td><button>Login</button>
-				</tr>
-			</table>
-        </form>
-	</div>
-	
-	<div id="signup">
-        <form action="/signup" method="POST">
-			<label id="txtsignupusername">Username:</label>
-			<input type="text" id="txtsignupusername" name="txtsignupusername" required><br>
-			
-			<label id="txtsignuppassword">Password:</label>
-			<input type="password" id="txtsignuppassword" name="txtsignuppassword" required><br>
-
-			<label id="txtsignuprpassword">Repeat Password:</label>
-			<input type="password" id="txtsignuprpassword" name="txtsignuprpassword" required><br>
-
-			<button>Create Account</button>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" href="/static/login.css">
+	</head>
+	<body>
+		<h1>Steps Make the Way</h1>
+		
+		<div id="login">
+			<form action="/login" method="POST">
+				<table>
+					<tr>
+						<td><label id="txtusername">Username:</label>
+						<td><input type="text" id="txtusername" name="txtusername" required>
+					</tr>
+					<tr>
+						<td><label id="txtpassword">Password:</label>
+						<td><input type="password" id="txtpassword" name="txtpassword" required>
+					</tr>
+					<tr>
+						<td><button>Login</button>
+					</tr>
+					<tr>
+						<td>Don't have an account?<a href="#" id="showsignup">Sign Up</a></td>
+					</tr>
+				</table>
 			</form>
-    </div>
-</body>
+		</div>
+		
+		<div id="signup">
+			<form action="/signup" method="POST">
+				<table>
+					<tr>
+						<td><label id="txtsignupusername">Username:</label>
+						</td><input type="text" id="txtsignupusername" name="txtsignupusername" required>
+					</tr>
+					<tr>
+						<td><label id="txtsignuppassword">Password:</label>
+						<td><input type="password" id="txtsignuppassword" name="txtsignuppassword" required>
+					</tr>
+						<td><label id="txtsignuprpassword">Repeat Password:</label>
+						<td><input type="password" id="txtsignuprpassword" name="txtsignuprpassword" required>
+					</tr>
+					<tr>
+						<td><button>Create Account</button>
+					</tr>
+					<tr>
+						<td>Already have an account?<a href="#" id="showlogin">Log in</a>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
 </html>
