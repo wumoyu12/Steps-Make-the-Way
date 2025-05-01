@@ -1,17 +1,20 @@
-body {
+body
+{
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: red;
     margin: 0;
     padding: 20px;
     text-align: center;
 }
 
-h1 {
+h1
+{
     color: #333;
     margin-bottom: 30px;
 }
 
-#login, #signup {
+#login, #signup
+{
     background-color: white;
     width: 300px;
     margin: 0 auto;
@@ -20,21 +23,18 @@ h1 {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-#signup {
-    display: none;
-}
-
-table {
+table
+{
     width: 100%;
 }
 
-td {
+td
+{
     padding: 5px;
 }
 
-input[type="text"], 
-input[type="password"],
-select {
+input, select
+{
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -42,7 +42,8 @@ select {
     box-sizing: border-box;
 }
 
-button {
+button
+{
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
@@ -52,20 +53,19 @@ button {
     margin-top: 10px;
 }
 
-button:hover {
+button:hover
+{
     background-color: #45a049;
 }
 
-a {
+a
+{
     color: #4CAF50;
     text-decoration: none;
     margin-left: 5px;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-label {
+label
+{
     font-weight: bold;
 }
