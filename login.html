@@ -18,6 +18,15 @@
 						<td><input type="password" id="txtpassword" name="txtpassword" required>
 					</tr>
 					<tr>
+							<td><label for="usertype">Login as:</label></td>
+							<td>
+								<select id="usertype" name="usertype" required>
+									<option value="user">User</option>
+									<option value="admin">Admin</option>
+								</select>
+							</td>
+					</tr>
+					<tr>
 						<td><button>Login</button>
 					</tr>
 					<tr>
@@ -32,7 +41,7 @@
 				<table>
 					<tr>
 						<td><label id="txtsignupusername">Username:</label>
-						</td><input type="text" id="txtsignupusername" name="txtsignupusername" required>
+						<td><input type="text" id="txtsignupusername" name="txtsignupusername" required>
 					</tr>
 					<tr>
 						<td><label id="txtsignuppassword">Password:</label>
