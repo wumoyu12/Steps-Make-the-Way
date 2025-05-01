@@ -11,26 +11,27 @@
 				<table>
 					<tr>
 						<td><label id="txtusername">Username:</label>
-						<td><input type="text" id="txtusername" name="txtusername" required>
+						<td><input type="text" id="txtusername" name="txtusername" autofocus>
 					</tr>
 					<tr>
 						<td><label id="txtpassword">Password:</label>
-						<td><input type="password" id="txtpassword" name="txtpassword" required>
+						<td><input type="password" id="txtpassword" name="txtpassword">
 					</tr>
 					<tr>
 							<td><label for="usertype">Login as:</label></td>
 							<td>
-								<select id="usertype" name="usertype" required>
+								<select id="usertype" name="usertype">
+									<option value="" disabled selected>Select</option>
 									<option value="user">User</option>
 									<option value="admin">Admin</option>
 								</select>
 							</td>
 					</tr>
 					<tr>
-						<td><button>Login</button>
+						<td colspan="2"><button>Login</button>
 					</tr>
 					<tr>
-						<td>Don't have an account?<a href="#" id="showsignup">Sign Up</a></td>
+						<td colspan="2">Don't have an account?<a href="#" id="showsignup">Sign Up</a></td>
 					</tr>
 				</table>
 			</form>
@@ -41,20 +42,20 @@
 				<table>
 					<tr>
 						<td><label id="txtsignupusername">Username:</label>
-						<td><input type="text" id="txtsignupusername" name="txtsignupusername" required>
+						<td><input type="text" id="txtsignupusername" name="txtsignupusername">
 					</tr>
 					<tr>
 						<td><label id="txtsignuppassword">Password:</label>
-						<td><input type="password" id="txtsignuppassword" name="txtsignuppassword" required>
+						<td><input type="password" id="txtsignuppassword" name="txtsignuppassword">
 					</tr>
 						<td><label id="txtsignuprpassword">Repeat Password:</label>
-						<td><input type="password" id="txtsignuprpassword" name="txtsignuprpassword" required>
+						<td><input type="password" id="txtsignuprpassword" name="txtsignuprpassword">
 					</tr>
 					<tr>
-						<td><button>Create Account</button>
+						<td colspan="2"><button>Create Account</button>
 					</tr>
 					<tr>
-						<td>Already have an account?<a href="#" id="showlogin">Log in</a>
+						<td colspan="2">Already have an account?<a href="#" id="showlogin">Log in</a>
 					</tr>
 				</table>
 			</form>
