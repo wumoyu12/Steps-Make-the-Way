@@ -10,7 +10,7 @@
 			<form action="/login" method="POST">
 				<table>
 					<tr>
-						<td colspan="2" style="text-align"><h2>Log In</h2>
+						<td colspan="2"><h2>Log In</h2>
 					</tr>
 					<tr>
 						<td><label id="txtusername">Username:</label>
@@ -40,7 +40,7 @@
 			</form>
 		</div>
 		
-		<div id="signup">
+		<div id="signup" style="display:none;">
 			<form action="/signup" method="POST">
 				<table>
 					<tr>
@@ -56,6 +56,16 @@
 					</tr>
 						<td><label id="txtsignuprpassword">Repeat Password:</label>
 						<td><input type="password" id="txtsignuprpassword" name="txtsignuprpassword">
+					</tr>
+					<tr>
+							<td><label for="usertype">Sign Up as:</label></td>
+							<td>
+								<select id="usertype" name="usertype">
+									<option value="" disabled selected>Select</option>
+									<option value="user">User</option>
+									<option value="admin">Admin</option>
+								</select>
+							</td>
 					</tr>
 					<tr>
 						<td colspan="2"><button>Create Account</button>
