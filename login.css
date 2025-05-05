@@ -1,7 +1,7 @@
 body
 {
     font-family: Arial;
-    background-color: #FCEBA6;
+    background-color: #415063;
     margin: 0;
     padding: 20px;
     text-align: center;
@@ -9,13 +9,13 @@ body
 
 h1
 {
-    color: #231609;
+    color: white;
     margin-bottom: 30px;
 }
 
 #login, #signup
 {
-    background-color: white;
+    background-color: #EEDAB0;
     width: 300px;
     margin: 0 auto;
     padding: 20px;
