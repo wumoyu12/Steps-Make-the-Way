@@ -23,5 +23,14 @@ def GetInfo():
     else:
         return render_template("UserHome.html",username = username);
 
+def CheckExist():
+    filename = username + ".doc"
+    fileexist = bool(path.exists(filename))
+
+    if (fileexist == False):
+        status = "new";
+    else:
+        status = "edit";
+
 if __name__ == "__main__":
     app.run()
