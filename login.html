@@ -13,15 +13,15 @@
 						<td colspan="2"><h2>Log In</h2>
 					</tr>
 					<tr>
-						<td><label id="txtusername">Username:</label>
+						<td><label id="lblusername">Username:</label>
 						<td><input type="text" id="txtusername" name="txtusername" autofocus></input>
 					</tr>
 					<tr>
-						<td><label id="txtpassword">Password:</label>
+						<td><label id="lblpassword">Password:</label>
 						<td><input type="password" id="txtpassword" name="txtpassword"></input>
 					</tr>
 					<tr>
-							<td><label for="usertype">Login as:</label></td>
+							<td><label for="lblusertype">Login as:</label></td>
 							<td>
 								<select id="usertype" name="usertype">
 									<option value="" disabled selected>Select</option>
@@ -29,6 +29,13 @@
 									<option value="admin">Admin</option>
 								</select>
 							</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							{% if error %}
+								<div id="error">{{ error }}</div>
+							{% endif %}
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2"><button>Login</button>
@@ -66,6 +73,13 @@
 									<option value="admin">Admin</option>
 								</select>
 							</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							{% if error %}
+								<div id="error">{{ error }}</div>
+							{% endif %}
+						<td>
 					</tr>
 					<tr>
 						<td colspan="2"><button>Create Account</button></td>
