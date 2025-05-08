@@ -1,4 +1,4 @@
-body
+ body
 {
     font-family: Arial;
     background-color: #1a2a4a;
@@ -14,9 +14,9 @@ h1
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
-#login, #signup
+div[id="login"], [id="signup"]
 {
-    background-color: #f9e8b2;
+    background-color: #fff3d1;
     width: 300px;
     margin: 0 auto;
     padding: 20px;
@@ -80,4 +80,9 @@ label
 {
     font-weight: bold;
     color: #3a3a3a;
+}
+
+div [id="error"]
+{
+	color: red;
 }
