@@ -59,9 +59,11 @@ def CheckInput():
     filename = username + ".doc"
     file = open(filename, "r")
     content = file.read()
+    infologin = logacctfile.read().split(" ")
     file.close()
     
     userinfo = content.split(" ")
+    storedpasswd = content[0].strip()
     if userpasswd != storedpasswd:
         return "Invalid password"
     
