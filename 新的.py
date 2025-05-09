@@ -65,7 +65,6 @@ def CheckInput():
     if userpasswd != storedpasswd:
         return "Invalid password"
     
-    return None
 
 def CheckExist(username):
     global status
