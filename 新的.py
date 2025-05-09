@@ -50,7 +50,7 @@ def SignUp():
 
 def CheckInput():
     if username == "" or userpasswd == "":
-        return "Please enter both fields"
+        return "Please enter all fields"
     
     CheckExist(username)
     if status == "new":
@@ -61,7 +61,7 @@ def CheckInput():
     content = file.read()
     file.close()
     
-    storedpasswd, storedtype = content.split(" ")
+    userinfo = content.split(" ")
     if userpasswd != storedpasswd:
         return "Invalid password"
     
