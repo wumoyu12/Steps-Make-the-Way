@@ -59,14 +59,13 @@ def CheckInput():
     filename = username + ".doc"
     file = open(filename, "r")
     content = file.read()
-    infologin = logacctfile.read().split(" ")
+    userinfo = content.read().split(" ")
     file.close()
-    
-    userinfo = content.split(" ")
+
     storedpasswd = content[0].strip()
+    storetype = content[1].strip()
     if userpasswd != storedpasswd:
         return "Invalid password"
-    
 
 def CheckExist(username):
     global status
