@@ -1,7 +1,7 @@
 body
 {
     font-family: Arial;
-    background-color: #1a2a4a;
+    background-color: #90AAC9;
     margin: 0;
     padding: 20px;
     text-align: center;
@@ -17,7 +17,7 @@ h1
 div[id="login"], [id="signup"]
 {
     background-color: #fff3d1;
-    width: 300px;
+    width: 350px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
@@ -36,7 +36,6 @@ td
 
 input, select
 {
-    width: 100%;
     padding: 10px;
     border: 1px solid #d1c7a3;
     border-radius: 4px;
@@ -85,4 +84,14 @@ label
 div [id="error"]
 {
 	color: red;
+}
+
+input
+{
+	width:190px;
+}
+
+select
+{
+	width:100px;
 }
