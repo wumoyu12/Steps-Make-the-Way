@@ -5,6 +5,10 @@ body
     margin: 0;
     padding: 20px;
     text-align: center;
+    background-image: url("loginbackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1
