@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" href="/static/login.css">
+	</head>
+	<body>
+		<h1>Steps Make the Way</h1>
+		
+		<div id="container">
+			<div id="leftpanel">
+				<table>
+					<tr>
+						<td><h2>Welcome Back!</h2></td>
+					</tr>
+					<tr>
+						<td><img src="/static/welcome-image.png" alt="Welcome Image" style="width:100%; max-width:300px;"></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="rightpanel">
+				<div id="login">
+					<form action="/login" method="POST">
+						<table>
+							<tr>
+								<td colspan="2"><h2>Log In</h2>
+							</tr>
+							<tr>
+								<td><label id="lblusername">Username:</label>
+								<td><input type="text" id="txtusername" name="txtusername" autofocus></input>
+							</tr>
+							<tr>
+								<td><label id="lblpassword">Password:</label>
+								<td><input type="password" id="txtpassword" name="txtpassword"></input>
+							</tr>
+							<tr>
+									<td><label for="lblusertype">Login as:</label></td>
+									<td>
+										<select id="usertype" name="usertype">
+											<option value="" disabled selected>Select</option>
+											<option value="user">User</option>
+											<option value="admin">Admin</option>
+										</select>
+									</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									{% if error %}
+										<div id="error">{{ error }}</div>
+									{% endif %}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2"><button>Login</button>
+							</tr>
+							<tr>
+								<td colspan="2">Don't have an account?<a href="#" id="showsignup">Sign Up</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				
+				<div id="signup" style="display:none;">
+					<form action="/signup" method="POST">
+						<table>
+							<tr>
+								<td colspan="2"><h2>Sign Up</h2></td>
+							</tr>
+							<tr>
+								<td><label id="txtsignupusername">Username:</label></td>
+								<td><input type="text" id="txtsignupusername" name="txtsignupusername" autofocus></input></td>
+							</tr>
+							<tr>
+								<td><label id="txtsignuppassword">Password:</label></td>
+								<td><input type="password" id="txtsignuppassword" name="txtsignuppassword"></input></td>
+							</tr>
+								<td><label id="txtsignuprpassword">Repeat Password:</label></td>
+								<td><input type="password" id="txtsignuprpassword" name="txtsignuprpassword"></input></td>
+							</tr>
+							<tr>
+									<td><label for="usertype">Sign Up as:</label></td>
+									<td>
+										<select id="usertype" name="usertype">
+											<option value="" disabled selected>Select</option>
+											<option value="user">User</option>
+											<option value="admin">Admin</option>
+										</select>
+									</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									{% if error %}
+										<div id="error">{{ error }}</div>
+									{% endif %}
+								<td>
+							</tr>
+							<tr>
+								<td colspan="2"><button>Create Account</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">Already have an account?<a href="#" id="showlogin">Log in</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
