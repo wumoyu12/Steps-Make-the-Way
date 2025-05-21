@@ -1,0 +1,139 @@
+body
+{
+    font-family: Arial;
+    background-color: #5D7AAA;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+label[id="lblwlcmsg"],[id="lblwlcmsg2"],[id="lblhelp"]
+{
+	font-size:37px;
+	font-family:roboto;
+	color:#222b6b;
+}
+
+label[id="lblwlcmsg2"]
+{
+	color:#781414;
+}
+
+table,th,td
+{
+	text-align:center;
+	border: 0px solid black;
+	border-collapse: collapse;
+	margin: 0 auto;
+	color: #faecca;
+}
+
+th[id="thSMTW"]
+{
+    color: #F3EBE0;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	font-size:50px;
+}
+
+td[id="logo"],[id="logout"]
+{
+    padding: 0px;
+}
+
+image
+{
+	mix-blend-mode: multiply;
+}
+
+table
+{
+    width: 100%;
+}
+
+td
+{
+    padding: 8px;
+}
+
+
+input, select
+{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1c7a3;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fffef8;
+}
+
+button
+{
+    border: none;
+}
+
+button[id="btnlogout"]
+{
+    background-color: #4a6fc7;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button[id="btnlogout"]
+{
+    height:100px;
+	width:100px;
+	margin: auto;
+}
+
+button[id="btnlogout"]:hover
+{
+    background-color: #3a5bb7;
+}
+
+a
+{
+    color: #4a6fc7;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+a:hover
+{
+    color: #3a5bb7;
+    text-decoration: underline;
+}
+
+label
+{
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+summary 
+{
+  cursor: pointer;
+}
+
+td[id="QAs"]
+{
+	font-size:30px;
+	color: #5c392f;
+}
+
+p
+{
+	color:#2d1e36;
+}
+
+hr
+{
+	background-color: #faecca;
+}
