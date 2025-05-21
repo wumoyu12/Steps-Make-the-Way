@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>Admin Home</title>
+		<link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+		<link rel="stylesheet" href="/static/home.css">
+	</head>
+	<body>
+		<header>
+			<table id="title" style="width:100%">
+				<tr>
+					<td id="logo"><img id="displayimage" src="/static/logo.jpg" height="120px" width="120px"></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+		</header>
+		<label id="lblwlcmsg">Welcome {{username}}!</label>
+		
+		<div id="information">
+			<form action="/AdminHome" method="POST">
+				<table width="100%">
+					<tr>
+						<td id="Welcome" colspan="4">
+							<label id="lblwlcmsg2">Lead the way from here!</label><br>
+							<label id="lblwlcmsg">Every detail you manage shapes someone's chance to give back.</label>
+						</td>
+					</tr>
+					<tr>
+						<td id="Intro" width="25%">
+							<button id="btnAdminIntro" type="button" onclick="window.location.href='/AdminIntro'">
+								<img id="displayimage" src="/static/AdminIntro.jpg" height="100%" width="100%">
+							</button>
+						</td>
+						<td id="Events" width="25%">
+							<button id="btnAdminEvents" type="button" onclick="window.location.href='/AdminEvents'">
+								<img id="displayimage" src="/static/AdminEvents.jpg" height="100%" width="100%">
+							</button>
+						</td>
+						<td id="Product" width="25%">
+							<button id="btnAdminProduct" type="button" onclick="window.location.href='/AdminProduct'">
+								<img id="displayimage" src="/static/AdminDonation.jpg" height="100%" width="100%">
+							</button>
+						</td>
+						<td id="Volunteers" width="25%">
+							<button id="btnAdminVolunteers" type="button" onclick="window.location.href='/AdminVolunteers'">
+								<img id="displayimage" src="/static/AdminVolunteers.jpg" height="100%" width="100%">
+							</button>
+						</td>
+					</tr>
+				</table>
+				
+				<table id="helpadmin" width="100%">
+					<tr>
+						<td id="HELP">
+							<label id="lblhelp">Need some clarification?</label><br>
+						</td>
+					</tr>
+					<tr>
+						<td id="QAs">
+							<details>
+								<summary>What does "Edit Intro Info" do?</summary>
+								<p>Edit the introduction about your organization — who you are, what you stand for, and why your mission matters.</p>
+							</details>
+						</td>
+					</tr>
+					<tr>
+						<td id="QAs">
+							<details>
+								<summary>What does "Edit Event Info" do?</summary>
+								<p>Edit the core details of your event: name, date, location, description, and how many volunteers are needed.</p>
+							</details>
+						</td>
+					</tr>
+					<tr>
+						<td id="QAs">
+							<details>
+								<summary>What does "Edit Donation Product" do?</summary>
+								<p>Edit the details of products that generate profit for donations.</p>
+							</details>
+						</td>
+					</tr>
+					<tr>
+						<td id="QAs">
+							<details>
+								<summary>What does "Edit Volunteer Info" do?</summary>
+								<p>Manage volunteers: update their details, assign them to events, track hours, and review participation history.</p>
+							</details>
+						</td>
+					</tr>
+					<tr>
+						<td id="QAs">
+							<details>
+								<summary>About the Text in Parentheses</summary>
+								<table>
+									<tr>
+										<td width="20%" style="text-align:right">
+											<img id="displayimage" src="/static/AdminHelp.jpg" height="150px" width="150px">
+										</td>
+										<td id="QAs" style="text-align:left">
+											<p>The text inside parentheses (e.g., "Become an Official Volunteer") will be shown on the volunteer's homepage as a button.</p>
+										</td>
+									</tr>
+								</table>
+							</details>
+						</td>
+					</tr>
+					
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
+
