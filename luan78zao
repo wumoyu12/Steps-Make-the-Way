@@ -1,1 +1,264 @@
+body
+{
+    font-family: Arial;
+    background-color: #7AA0D2;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
 
+div[id="titlecontainer"]
+{
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+div[id="titlecontainer"] table
+{
+    margin: 0 auto;
+}
+
+img[id="logo"]
+{
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+h1
+{
+    color: #FFFDF8;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div[id="container"]
+{
+    display: flex;
+    width: 732px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+div[id="left"]
+{
+    width: 332px;
+    padding: 20px;
+    text-align: center;
+}
+
+div[id="right"]
+{
+    width: 400px;
+    padding: 20px;
+}
+
+div[id="login"], div[id="signup"]
+{
+    background-color: white;
+    width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+table
+{
+    width: 100%;
+}
+
+td
+{
+    padding: 8px;
+}
+
+input, select
+{
+    padding: 10px;
+    border: 1px solid lightblue;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f7fafc;
+}
+
+button
+{
+    background-color: #4a6fc7;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover
+{
+    background-color: #3a5bb7;
+}
+
+a
+{
+    color: #4a6fc7;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+a:hover
+{
+    color: #3a5bb7;
+    text-decoration: underline;
+}
+
+label
+{
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+div [id="error"]
+{
+    color: red;
+}
+
+input
+{
+    width:190px;
+}
+
+select
+{
+    width:100px;
+}
+
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" href="/static/login.css">
+	</head>
+	<body>
+		<div id="titlecontainer">
+			<table>
+				<tr>
+					<td><img src="/static/logo.png" alt="Logo" id="logo"></td>
+					<td><h1>Steps Make the Way</h1></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="container">
+			<div id="left">
+				<table>
+					<tr>
+						<td>
+							<h2>Join Us Here!
+							<img src="/static/loginarrow.gif" alt="Arrow" style="height:40px; width:80px;"><h2>
+						</td>
+					</tr>
+					<tr>
+						<td>Every Step Matters，</td>
+					</tr>
+					<tr>
+						<td style="text-align: right;">Welcome to Your Journey！</td>
+					</tr>					
+					<tr>
+						<td><img src="/static/welcome.jpg" alt="WelcomeImage" style="width:100%; max-width:300px;"></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="right">
+				<div id="login">
+					<form action="/login" method="POST">
+						<table>
+							<tr>
+								<td colspan="2"><h2>Log In</h2>
+							</tr>
+							<tr>
+								<td><label id="lblusername">Username:</label>
+								<td><input type="text" id="txtusername" name="txtusername" autofocus></input>
+							</tr>
+							<tr>
+								<td><label id="lblpassword">Password:</label>
+								<td><input type="password" id="txtpassword" name="txtpassword"></input>
+							</tr>
+							<tr>
+									<td><label for="lblusertype">Login as:</label></td>
+									<td>
+										<select id="usertype" name="usertype">
+											<option value="" disabled selected>Select</option>
+											<option value="user">User</option>
+											<option value="admin">Admin</option>
+										</select>
+									</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									{% if error %}
+										<div id="error">{{ error }}</div>
+									{% endif %}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2"><button>Login</button>
+							</tr>
+							<tr>
+								<td colspan="2">Don't have an account?<a href="#" id="showsignup">Sign Up</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				
+				<div id="signup" style="display:none;">
+					<form action="/signup" method="POST">
+						<table>
+							<tr>
+								<td colspan="2"><h2>Sign Up</h2></td>
+							</tr>
+							<tr>
+								<td><label id="txtsignupusername">Username:</label></td>
+								<td><input type="text" id="txtsignupusername" name="txtsignupusername" autofocus></input></td>
+							</tr>
+							<tr>
+								<td><label id="txtsignuppassword">Password:</label></td>
+								<td><input type="password" id="txtsignuppassword" name="txtsignuppassword"></input></td>
+							</tr>
+								<td><label id="txtsignuprpassword">Repeat Password:</label></td>
+								<td><input type="password" id="txtsignuprpassword" name="txtsignuprpassword"></input></td>
+							</tr>
+							<tr>
+									<td><label for="usertype">Sign Up as:</label></td>
+									<td>
+										<select id="usertype" name="usertype">
+											<option value="" disabled selected>Select</option>
+											<option value="user">User</option>
+											<option value="admin">Admin</option>
+										</select>
+									</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									{% if error %}
+										<div id="error">{{ error }}</div>
+									{% endif %}
+								<td>
+							</tr>
+							<tr>
+								<td colspan="2"><button>Create Account</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">Already have an account?<a href="#" id="showlogin">Log in</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
