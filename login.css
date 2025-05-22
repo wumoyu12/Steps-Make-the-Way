@@ -1,31 +1,49 @@
 body
 {
     font-family: Arial;
-    background-color: #90AAC9;
+    background-color: #779DE9;
     margin: 0;
     padding: 20px;
     text-align: center;
-    background-image: url("loginbackground.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 h1
 {
-    color: #f8d56b;
+    color: white;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    
 }
 
-div[id="login"], [id="signup"]
+div[id="container"]
 {
-    background-color: #fff3d1;
+    display: flex;
+    width: 732px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+div[id="left"]
+{
+    width: 332px;
+    padding: 20px;
+    text-align: center;
+}
+
+div[id="right"]
+{
+    width: 400px;
+    padding: 20px;
+}
+
+div[id="login"], div[id="signup"]
+{
+    background-color: white;
     width: 350px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 table
@@ -41,10 +59,10 @@ td
 input, select
 {
     padding: 10px;
-    border: 1px solid #d1c7a3;
+    border: 1px solid lightblue;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #fffef8;
+    background-color: #f7fafc;
 }
 
 button
@@ -87,15 +105,15 @@ label
 
 div [id="error"]
 {
-	color: red;
+    color: red;
 }
 
 input
 {
-	width:190px;
+    width:190px;
 }
 
 select
 {
-	width:100px;
+    width:100px;
 }
