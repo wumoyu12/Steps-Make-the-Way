@@ -1,0 +1,108 @@
+from flask import Flask, render_template, request, redirect
+import os.path
+from os import path
+
+app = Flask(__name__)
+
+@app.route("/")
+def main():
+    return render_template("login.html", usermsg="login")
+
+@app.route("/login",methods=["POST"])
+def GetInfo():
+    global username,userpasswd,filename
+    global fileDir
+    fileDir = os.path.dirname(os.path.realpath("__file__"));
+
+    username = request.form.get('txtusername');
+    userpasswd = request.form.get('txtpassword');
+    usertype = request.form.get('usertype');
+
+    if (username == "" or userpasswd == ""):
+        error = "Please enter all fields"
+        return render_template("login.html", error=error, usermsg="login")
+
+    filename = username + ".doc"
+    CheckExist(filename)
+    if (status == "new"):
+        error =  "Account Not Found"
+        return render_template("login.html", error=error, usermsg="login")
+
+    IfTrue = CheckPw(filename,userpasswd)
+    if (IfTrue == "False"):
+        error =  "Invalid password"
+        return render_template("login.html", error=error, usermsg="login")
+
+    if(usertype == "admin"):
+        return CheckAdmin();
+    elif(usertype == "user"):
+        return render_template("UserHome.html",username = username);
+    else:
+        error =  "Please choose to login as a user or an admin"
+        return render_template("login.html", error=error, usermsg="login")
+
+def CheckPw(name,pw):
+    file = open(name, "r+")
+    fileitems = file.read().split(",");
+    file.close()
+
+    if(fileitems[0] != pw):
+        TorF = "False"
+    else:
+        TorF = "True"
+    return TorF
+
+def CheckExist(name):
+    global status
+    fileexist = bool(path.exists(name))
+
+    if (fileexist == False):
+        status = "new"
+    else:
+        status = "exist"
+
+def CheckAdmin():
+    if (username == "admin" and userpasswd == "admin123"):
+        return render_template("AdminHome.html",username = username);
+    else:
+        error =  "This account doesn't have admin privelige"
+        return render_template("login.html", error=error, usermsg="login")
+    
+@app.route("/signup", methods=["POST"])
+def SignUp():
+    global filename
+    username = request.form.get('txtsignupusername')
+    userpasswd = request.form.get('txtsignuppassword')
+    userpasswdr = request.form.get('txtsignuprpassword')
+    
+    if (username == "" or userpasswd == "" or userpasswdr == ""):
+        return render_template("login.html", error="Please fill all fields", usermsg="signup")
+    
+    if (userpasswd != userpasswdr):
+        return render_template("login.html", error="Passwords don't match", usermsg="signup")
+
+    filename = username + ".doc"
+    CheckExist(filename)
+    if (status == "exist"):
+        return render_template("login.html", error="Account already exists", usermsg="signup")
+    else:
+        CreateFile(filename)
+        Append(filename,userpasswd)
+    
+    return render_template("login.html", error="Account created successfully! You can now use your info to login!", usermsg="login")
+
+def CreateFile(name):
+    adminfile = open(name,"x");
+    adminfile.close();
+
+def Append(name,info):
+    adminfile = open(name,"a");
+    adminfile.write(info + ",");
+    adminfile.close();
+    
+@app.route("/AdminIntro")
+def AdminIntro():
+    return render_template("login.html",username = username);
+
+if __name__ == "__main__":
+    app.run()
