@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect
 import os.path
 from os import path
@@ -113,7 +114,72 @@ def Append(name,info):
     
 @app.route("/AdminIntro")
 def AdminIntro():
-    return render_template("login.html",usermsg="login");
+    CreateStatusFile();
+    CreateIntroFile();
+    whichfile = "IntroStatus.doc"
+    Introwhich = GetInfo(whichfile);
+    if(Introwhich == "" or Introwhich == "Default Introduction(shown below)"):
+        whichIntro = "Default Introduction(shown below)"
+    else:
+        whichIntro = "Custom Introduction"
+
+    filename = "AdminIntro.doc"
+    content = GetInfo(filename)
+    
+    return render_template("AdminIntro.html",whichIntro=whichIntro, content = content);
+
+def CreateStatusFile():
+    thefilename = "IntroStatus.doc"
+    CheckExist(thefilename)
+    if (status == "new"):
+        CreateFile(thefilename)
+
+def CreateIntroFile():
+    filename = "AdminIntro.doc"
+    CheckExist(filename)
+    if (status == "new"):
+        CreateFile(filename)
+    
+def GetInfo(name):
+    file = open(name, "r+")
+    text = file.read()
+    file.close()
+    return text;
+    
+@app.route("/ApplyCustom", methods=["POST"])
+def ApplyCustom():
+    txtIntro = request.form.get('txtIntro');
+    if(txtIntro == ""):
+        msg = "Please enter your custom Introduction before you apply"
+        return render_template("AdminIntro.html", error=msg, whichIntro="Default Introduction(shown below)");
+    else:
+        filename = "AdminIntro.doc"
+        Write(filename,txtIntro);
+        whichIntro = "Custom Introduction"
+        whichfile = "IntroStatus.doc"
+        Write(whichfile,whichIntro)
+
+        filename = "AdminIntro.doc"
+        content = GetInfo(filename)
+        msg = "applied!"
+        
+        return render_template("AdminIntro.html",error=msg,whichIntro=whichIntro,content=content);
+
+def Write(file,info):
+    adminfile = open(file,"w");
+    adminfile.write(info);
+    adminfile.close();
+
+@app.route("/ApplyDefault", methods=["POST"])
+def ApplyDefault():
+    whichfile = "IntroStatus.doc"
+    whichIntro = "Default Introduction(shown below)"
+    Write(whichfile,whichIntro)
+
+    filename = "AdminIntro.doc"
+    content = GetInfo(filename)
+        
+    return render_template("AdminIntro.html",whichIntro=whichIntro,content=content);
 
 if __name__ == "__main__":
     app.run()
