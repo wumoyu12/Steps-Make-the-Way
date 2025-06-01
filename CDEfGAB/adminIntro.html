@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Admin Intro</title>
+		<link rel="stylesheet" href="/static/Intro.css">
+	</head>
+	<body>
+		<header>
+			<table id="title" style="width:100%">
+				<tr>
+					<td id="logo"><img id="displayimage" src="/static/logo.jpg" height="120px" width="120px"></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+		</header>
+		<label id="lblwlcmsg">Edit the Introduction Here!</label>
+		
+		<h2 style="text-align:center;">You are currently using the <strong style="color:white;">{{whichIntro}}</strong>.</h2>
+		<div id="information">
+			<form action="/ApplyCustom" method="POST">
+				<h3 style="text-align:center;">Custom Introduction<h3>
+				<table width="100%">
+					<tr>
+						<td id="GetIntro">
+							<textarea id="txtIntro" name="txtIntro" autofocus>{{content}}</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td id="errormsg">{{ error }}</td>
+					</tr>
+					<tr>
+						<td id="apply" style="text-align:right">
+							<button type="submit" id="btnapply">Apply</button>
+						</td>
+					</tr>
+				</table>
+				
+			</form>
+		</div>
+		
+		<div id="defaultIntro" style="margin-top: 20px;">
+			<form action="/ApplyDefault" method="POST">
+				<h3 style="text-align:center;">Default Introduction<h3>
+				<table width="100%">
+					<tr>
+						<td id="GetIntro">
+							<p>Welcome to <strong>Steps Make the Ways</strong> – Where Compassion Meets Action.</p>
+							<p>At Steps Make the Ways, we believe in the power of people to create meaningful change. As a volunteer-driven organization, our mission is to connect passionate individuals with opportunities that make a real difference in communities near and far.</p>
+							<p>Explore our site to learn more about our causes, meet our dedicated volunteers, and discover how you can get involved. Together, we can build stronger, more compassionate communities—one act of kindness at a time.</p>
+						</td>
+					</tr>
+					<tr>
+						<td id="apply" style="text-align:right">
+							<button type="submit" id="btnapplydefualt">Apply</button>
+						</td>
+					</tr>
+				</table>
+				
+			</form>
+		</div>
+	</body>
+</html>
+
+
