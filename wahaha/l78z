@@ -43,9 +43,9 @@
 							<input type="text" id="txteventdetails" name="txteventdetails"></input> <button>Add</button>
 						</li>
 					</ul>
-				
 			</td>
 		</table>
+		<button>Submit</button>
 		
 	</body>
 </html>
