@@ -34,7 +34,7 @@ td[id="back"], td[id="logout"]
 
 button[id="btnhome"]
 {
-    background-color: #4a6fc7;
+    background-color: #09A8AB;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -50,8 +50,7 @@ button[id="btnhome"]
 
 button[id="btnhome"]:hover
 {
-    background-color: #3a5bb7;
-    transform: scale(1.05);
+    background-color: #027C7E;
 }
 
 button[id="btnlogout"]
@@ -73,7 +72,6 @@ button[id="btnlogout"]
 button[id="btnlogout"]:hover
 {
     background-color: #8a090a;
-    transform: scale(1.05);
 }
 
 div[id="eventform"]
