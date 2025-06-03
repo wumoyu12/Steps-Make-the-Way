@@ -135,7 +135,7 @@ input[type="date"]
     width: 250px;
 }
 
-button[class="btnadddetail"], button[class="btndeletedetail"]
+button[id="btnadddetail"], button[id="btndeletedetail"]
 {
     color: white;
     padding: 10px 15px;
@@ -147,22 +147,22 @@ button[class="btnadddetail"], button[class="btndeletedetail"]
     margin-left: 10px;
 }
 
-button[class="btnadddetail"]
+button[id="btnadddetail"]
 {
     background-color: #4a6fc7;
 }
 
-button[class="btnadddetail"]:hover
+button[id="btnadddetail"]:hover
 {
     background-color: #3a5bb7;
 }
 
-button[class="btndeletedetail"]
+button[id="btndeletedetail"]
 {
     background-color: #AC0A0B;
 }
 
-button[class="btndeletedetail"]:hover
+button[id="btndeletedetail"]:hover
 {
     background-color: #8a090a;
 }
@@ -192,14 +192,14 @@ div[id="detailscontainer"]
     text-align: left;
 }
 
-div[class="detailrow"]
+div[id="detailrow"]
 {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
 
-div[class="detailrow"] input
+div[id="detailrow"] input
 {
     flex-grow: 1;
     margin-right: 10px;
