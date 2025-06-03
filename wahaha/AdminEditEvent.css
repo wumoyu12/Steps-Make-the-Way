@@ -185,10 +185,6 @@ button[id="btnsubmit"]:hover
     transform: scale(1.05);
 }
 
-div[id="detailscontainer"]
-{
-    text-align: left;
-}
 
 div[id="detailrow"]
 {
@@ -197,7 +193,7 @@ div[id="detailrow"]
     align-items: center;
 }
 
-div[id="detailrow"] input
+input[id="txteventdetails"]
 {
     flex-grow: 1;
     margin-right: 10px;
