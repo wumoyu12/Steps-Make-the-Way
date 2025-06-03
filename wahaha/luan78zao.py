@@ -1,0 +1,196 @@
+from flask import Flask, render_template, request, redirect
+import os.path
+from os import path
+
+app = Flask(__name__)
+
+@app.route("/")
+def main():
+    return render_template("login.html", usermsg="login")
+
+@app.route("/login",methods=["POST"])
+def GetInfo():
+    global username,userpasswd,filename
+    global fileDir
+    fileDir = os.path.dirname(os.path.realpath("__file__"));
+
+    username = request.form.get('txtusername');
+    userpasswd = request.form.get('txtpassword');
+    usertype = request.form.get('usertype');
+
+    if (username == "" or userpasswd == ""):
+        error = "Please enter all fields"
+        return render_template("login.html", error=error, usermsg="login")
+
+    if(usertype == None):
+        error =  "Please choose to login as a user or an admin"
+        return render_template("login.html", error=error, usermsg="login")
+    
+    if(usertype == "admin"):
+        return CheckAdmin();
+
+    filename = username + ".doc"
+    CheckExist(filename)
+    if (status == "new"):
+        error =  "Account Not Found"
+        return render_template("login.html", error=error, usermsg="login")
+    
+    IfTrue = CheckPw(filename,userpasswd)
+    
+    if (IfTrue == "False"):
+        error =  "Invalid password"
+        return render_template("login.html", error=error, usermsg="login")
+    else:
+        return render_template("UserHome.html",username = username);
+    
+
+def CheckPw(name,pw):
+    file = open(name, "r+")
+    fileitems = file.read().split(",");
+    file.close()
+
+    if(fileitems[0] != pw):
+        TorF = "False"
+    else:
+        TorF = "True"
+    return TorF
+
+def CheckExist(name):
+    global status
+    fileexist = bool(path.exists(name))
+
+    if (fileexist == False):
+        status = "new"
+    else:
+        status = "exist"
+
+def CheckAdmin():
+    if(username == "admin"):
+        if(userpasswd == "admin123"):
+            thefile = "admin.doc"
+            CheckExist(thefile);
+            if(status == "new"):
+                CreateFile(thefile)
+            return render_template("AdminHome.html",username = username);
+        else:
+            error =  "Incorrect password"
+            return render_template("login.html", error=error, usermsg="login")  
+    else:
+        error =  "This account doesn't have admin privelige"
+        return render_template("login.html", error=error, usermsg="login")
+    
+@app.route("/signup", methods=["POST"])
+def SignUp():
+    global filename
+    username = request.form.get('txtsignupusername')
+    userpasswd = request.form.get('txtsignuppassword')
+    userpasswdr = request.form.get('txtsignuprpassword')
+    
+    if (username == "" or userpasswd == "" or userpasswdr == ""):
+        return render_template("login.html", error="Please fill all fields", usermsg="signup")
+    
+    if (userpasswd != userpasswdr):
+        return render_template("login.html", error="Passwords don't match", usermsg="signup")
+
+    filename = username + ".doc"
+    CheckExist(filename)
+    if (status == "exist"):
+        return render_template("login.html", error="Account already exists", usermsg="signup")
+    else:
+        CreateFile(filename)
+        Append(filename,userpasswd)
+    
+    return render_template("login.html", error="Account created successfully! You can now use your info to login!", usermsg="login")
+
+def CreateFile(name):
+    adminfile = open(name,"x");
+    adminfile.close();
+
+def Append(name,info):
+    adminfile = open(name,"a");
+    adminfile.write(info + ",");
+    adminfile.close();
+    
+@app.route("/AdminIntro")
+def AdminIntro():
+    CreateStatusFile();
+    CreateIntroFile();
+    whichfile = "IntroStatus.doc"
+    Introwhich = GetInfo(whichfile);
+    if(Introwhich == "" or Introwhich == "Default Introduction(shown below)"):
+        whichIntro = "Default Introduction(shown below)"
+    else:
+        whichIntro = "Custom Introduction"
+
+    filename = "AdminIntro.doc"
+    content = GetInfo(filename)
+    
+    return render_template("AdminIntro.html",whichIntro=whichIntro, content = content);
+
+def CreateStatusFile():
+    thefilename = "IntroStatus.doc"
+    CheckExist(thefilename)
+    if (status == "new"):
+        CreateFile(thefilename)
+
+def CreateIntroFile():
+    filename = "AdminIntro.doc"
+    CheckExist(filename)
+    if (status == "new"):
+        CreateFile(filename)
+    
+def GetInfo(name):
+    file = open(name, "r+")
+    text = file.read()
+    file.close()
+    return text;
+    
+@app.route("/ApplyCustom", methods=["POST"])
+def ApplyCustom():
+    txtIntro = request.form.get('txtIntro');
+    if(txtIntro == ""):
+        msg = "Please enter your custom Introduction before you apply"
+        return render_template("AdminIntro.html", error=msg, whichIntro="Default Introduction(shown below)");
+    else:
+        filename = "AdminIntro.doc"
+        Write(filename,txtIntro);
+        whichIntro = "Custom Introduction"
+        whichfile = "IntroStatus.doc"
+        Write(whichfile,whichIntro)
+
+        filename = "AdminIntro.doc"
+        content = GetInfo(filename)
+        msg = "applied!"
+        
+        return render_template("AdminIntro.html",error=msg,whichIntro=whichIntro,content=content);
+
+def Write(file,info):
+    adminfile = open(file,"w");
+    adminfile.write(info);
+    adminfile.close();
+
+@app.route("/ApplyDefault", methods=["POST"])
+def ApplyDefault():
+    whichfile = "IntroStatus.doc"
+    whichIntro = "Default Introduction(shown below)"
+    Write(whichfile,whichIntro)
+
+    filename = "AdminIntro.doc"
+    content = GetInfo(filename)
+        
+    return render_template("AdminIntro.html",whichIntro=whichIntro,content=content);
+
+@app.route("/AdminHome")
+def AdminHome():
+    return render_template("AdminHome.html");
+
+@app.route("/AdminEvents")
+def AdminEvents():
+    return render_template("AdminEvents.html");
+
+@app.route("/AdminEditEvents")
+def AdminEditEvents():
+    return render_template("AdminEditEvents.html");
+
+if __name__ == "__main__":
+    app.run()
