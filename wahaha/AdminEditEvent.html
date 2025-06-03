@@ -40,6 +40,10 @@
 					</tr>
 					<tr>
 						<td>
+							{% for row in details %}
+								<td>{{row}}</td>
+							{% endfor %}
+							
 							<div id="details">
 								<div id="detailrow">
 									<input type="text" id="txteventdetails" name="txteventdetails">
