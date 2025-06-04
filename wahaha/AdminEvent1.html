@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Event</title>
+    <link rel="stylesheet" href="/static/AdminEvents.css">
+</head>
+<body>
+    <header>
+		<table id="title" style="width:100%">
+			<tr>
+				<td id="BackHome"><button type="button" id="btnlogout" onclick="window.location.href='/AdminHome'">Back Home</button></td>
+				<th id="thSMTW" width="90%">Steps Make the Way</th>
+				<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+    </header>
+
+    <div id="AllEvents">
+        <h2>Events</h2>
+        <div id="products">
+            {% for event in events %}
+				<table>
+					<tr><td></td></tr>
+				</table>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
