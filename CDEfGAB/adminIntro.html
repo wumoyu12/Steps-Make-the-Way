@@ -21,14 +21,17 @@
 				<h3 style="text-align:center;">Custom Introduction<h3>
 				<table width="100%">
 					<tr>
-						<td id="GetIntro">
+						<td id="GetIntro" colspan="2">
 							<textarea id="txtIntro" name="txtIntro" autofocus>{{content}}</textarea>
 						</td>
 					</tr>
 					<tr>
-						<td id="errormsg">{{ error }}</td>
+						<td id="errormsg" colspan="2">{{ error }}</td>
 					</tr>
 					<tr>
+						<td id="delete" style="width:90%;text-align:right">
+							<button type="button" id="btndelete">Delete Custom Intro</button>
+						</td>
 						<td id="apply" style="text-align:right">
 							<button type="submit" id="btnapply">Apply</button>
 						</td>
@@ -60,5 +63,3 @@
 		</div>
 	</body>
 </html>
-
-
