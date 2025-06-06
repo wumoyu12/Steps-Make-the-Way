@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect
 import os.path
 from os import path
@@ -125,6 +124,8 @@ def AdminIntro():
 
     filename = "AdminIntro.doc"
     content = GetInfo(filename)
+
+    #print(content)
     
     return render_template("AdminIntro.html",whichIntro=whichIntro, content = content);
 
@@ -141,10 +142,17 @@ def CreateIntroFile():
         CreateFile(filename)
     
 def GetInfo(name):
-    file = open(name, "r+")
-    text = file.read()
+    file = open(name, "r")
+    #text = file.read()
+    lines_array = file.readlines()
+    print(lines_array)
+
+    for line in lines_array:
+        print(line.rstrip('\n'))
+        
+    #print(text)
     file.close()
-    return text;
+    return lines_array;
     
 @app.route("/ApplyCustom", methods=["POST"])
 def ApplyCustom():
@@ -162,12 +170,15 @@ def ApplyCustom():
         filename = "AdminIntro.doc"
         content = GetInfo(filename)
         msg = "applied!"
+
+        #print(content)
         
         return render_template("AdminIntro.html",error=msg,whichIntro=whichIntro,content=content);
 
 def Write(file,info):
     adminfile = open(file,"w");
     adminfile.write(info);
+    print(info)
     adminfile.close();
 
 @app.route("/ApplyDefault", methods=["POST"])
