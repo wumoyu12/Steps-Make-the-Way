@@ -35,7 +35,7 @@ td[id="logo"], td[id="logout"]
     padding: 10px;
 }
 
-button[id="btnlogout"],button[id="btnapply"],[id="btnapplydefualt"]
+button[id="btnlogout"],button[id="btnapply"],[id="btnapplydefualt"],[id="btndelete"]
 {
     background-color: #AC0A0B;
     color: white;
@@ -63,7 +63,13 @@ button[id="btnapply"],[id="btnapplydefualt"]
     height: 50px;
     width: 100px;
     font-size: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button[id="btndelete"]
+{
+    height: 50px;
+    width: 150px;
+    font-size: 15px;
 }
 
 div[id="information"],[id="defaultIntro"]
@@ -101,4 +107,11 @@ textarea[id="txtIntro"]
 td[id="errormsg"]
 {
     color: red;
+}
+
+table,th,td
+{
+	margin: auto;
+	border: 1px solid black;
+	border-collapse: collapse;
 }
