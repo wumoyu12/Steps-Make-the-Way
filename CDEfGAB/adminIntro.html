@@ -16,24 +16,54 @@
 		<label id="lblwlcmsg">Edit the Introduction Here!</label>
 		
 		<h2 style="text-align:center;">You are currently using the <strong style="color:white;">{{whichIntro}}</strong>.</h2>
+		<h3 style="text-align:center;">Make sure to click <strong>Preview</strong> before you click <strong>Apply</strong>.</h3>
+		<h3 style="text-align:center;">Otherwise your changes <strong>WILL NOT</strong> be saved.</h3>
 		<div id="information">
-			<form action="/ApplyCustom" method="POST">
-				<h3 style="text-align:center;">Custom Introduction<h3>
+			<form action="/PreviewCustom" method="POST">
+				<h3 style="text-align:center;">Custom Introduction(up to 3 paragraphs)<h3>
 				<table width="100%">
 					<tr>
-						<td id="GetIntro" colspan="2">
-							<textarea id="txtIntro" name="txtIntro" autofocus>{{content}}</textarea>
+						<td colspan="2"><h4 style="text-align:center;">Paragraph #1<h4></td>
+					</tr>
+					<tr>
+						<td id="GetIntro" colspan="2"><input id="txtIntro1" name="txtIntro1" autofocus></input></td>
+					</tr>
+					<tr>
+						<td colspan="2"><h4 style="text-align:center;">Paragraph #2<h4></td>
+					</tr>
+					<tr>
+						<td id="GetIntro" colspan="2"><input id="txtIntro2" name="txtIntro2"></input></td>
+					</tr>
+					<tr>
+						<td colspan="2"><h4 style="text-align:center;">Paragraph #3<h4></td>
+					</tr>
+					<tr>
+						<td id="GetIntro" colspan="2"><input id="txtIntro3" name="txtIntro3"></input></td>
+					</tr>
+					<tr>
+						<td id="preview" colspan="2" style="text-align:right">
+							<button type="submit" id="btnpreview">Preview</button>
 						</td>
 					</tr>
 					<tr>
-						<td id="errormsg" colspan="2">{{ error }}</td>
+						<td colspan="2"><h4 style="text-align:center;">Preview Your Custom Intro:<h4></td>
+					</tr>
+					<tr>
+						<td id="errormsg" colspan="2" style="text-align:center;">{{ previewerror }}</td>
+					</tr>
+					<tr>
+						<td id="content" colspan="2">
+							<p>{{ content1 }}</p>
+							<p>{{ content2 }}</p>
+							<p>{{ content3 }}</p>
+						</td>
 					</tr>
 					<tr>
 						<td id="delete" style="width:90%;text-align:right">
-							<button type="button" id="btndelete">Delete Custom Intro</button>
+							<button type="button" id="btndelete" onclick="window.location.href='/DeleteCustomIntro'">Delete Custom Intro</button>
 						</td>
 						<td id="apply" style="text-align:right">
-							<button type="submit" id="btnapply">Apply</button>
+							<button type="button" id="btnapply" onclick="window.location.href='/ApplyCustom'">Apply</button>
 						</td>
 					</tr>
 				</table>
