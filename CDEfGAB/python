@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect
 import os.path
 from os import path
 
+# symbol^
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -43,10 +45,9 @@ def GetInfo():
     else:
         return render_template("UserHome.html",username = username);
     
-
 def CheckPw(name,pw):
     file = open(name, "r+")
-    fileitems = file.read().split(",");
+    fileitems = file.read().split("^");
     file.close()
 
     if(fileitems[0] != pw):
@@ -108,26 +109,18 @@ def CreateFile(name):
 
 def Append(name,info):
     adminfile = open(name,"a");
-    adminfile.write(info + ",");
+    adminfile.write(info + "^");
     adminfile.close();
-    
+
+############### Admin Intro Page Appears ###############
 @app.route("/AdminIntro")
 def AdminIntro():
+    global previewerror
+    previewerror = ""
     CreateStatusFile();
     CreateIntroFile();
-    whichfile = "IntroStatus.doc"
-    Introwhich = GetInfo(whichfile);
-    if(Introwhich == "" or Introwhich == "Default Introduction(shown below)"):
-        whichIntro = "Default Introduction(shown below)"
-    else:
-        whichIntro = "Custom Introduction"
 
-    filename = "AdminIntro.doc"
-    content = GetInfo(filename)
-
-    #print(content)
-    
-    return render_template("AdminIntro.html",whichIntro=whichIntro, content = content);
+    return CheckDisplayIntro();
 
 def CreateStatusFile():
     thefilename = "IntroStatus.doc"
@@ -140,57 +133,135 @@ def CreateIntroFile():
     CheckExist(filename)
     if (status == "new"):
         CreateFile(filename)
-    
-def GetInfo(name):
-    file = open(name, "r")
-    #text = file.read()
-    lines_array = file.readlines()
-    print(lines_array)
 
-    for line in lines_array:
-        print(line.rstrip('\n'))
-        
-    #print(text)
+def CheckIntroStatus():
+    whichfile = "IntroStatus.doc"
+    Introwhich = GetInforamtion(whichfile);
+    if(Introwhich == "" or Introwhich == "Default Introduction(shown below)"):
+        which = "Default Introduction(shown below)"
+    else:
+        which = "Custom Introduction"
+    return which
+
+def GetInforamtion(name):
+    file = open(name, "r")
+    text = file.read()
     file.close()
-    return lines_array;
+    return text;
+
+def CheckDisplayIntro():
+    global whichIntro
+    whichIntro = CheckIntroStatus();
+    ifempty = GetInforamtion("AdminIntro.doc")
+    if(ifempty == ""):
+        return render_template("AdminIntro.html",previewerror=previewerror,whichIntro=whichIntro);
+    else:
+        return DisplayIntro();
     
-@app.route("/ApplyCustom", methods=["POST"])
-def ApplyCustom():
-    txtIntro = request.form.get('txtIntro');
-    if(txtIntro == ""):
-        msg = "Please enter your custom Introduction before you apply"
-        return render_template("AdminIntro.html", error=msg, whichIntro="Default Introduction(shown below)");
+def DisplayIntro():
+    whichIntro = CheckIntroStatus();
+    filename = "AdminIntro.doc"
+    items = GetItems(filename)
+    lengthItems = len(items) -1
+
+    if(lengthItems == 3):
+        content3 = items[2]
+        content2 = items[1]
+        content1 = items[0]
+        return render_template("AdminIntro.html",previewerror=previewerror,whichIntro=whichIntro,content1=content1,content2=content2,content3=content3);
+    elif(lengthItems == 2):
+        content2 = items[1]
+        content1 = items[0]
+        return render_template("AdminIntro.html",previewerror=previewerror,whichIntro=whichIntro,content1=content1,content2=content2);
+    else:
+        content1 = items[0]
+        return render_template("AdminIntro.html",previewerror=previewerror,whichIntro=whichIntro,content1=content1);
+    
+############### Admin Intro Preview Intro ###############
+@app.route("/PreviewCustom", methods=["POST"])
+def PreviewCustom():
+    global previewerror
+    previewerror = ""
+    Intro = [];
+    txtIntro1 = request.form.get('txtIntro1');
+    txtIntro2 = request.form.get('txtIntro2');
+    txtIntro3 = request.form.get('txtIntro3');
+    if(txtIntro1 == "" and txtIntro2 == "" and txtIntro3 == ""):
+        previewerror = "Please enter your custom Introduction before you click on preview"
+        print(previewerror)
+        return CheckDisplayIntro()
     else:
         filename = "AdminIntro.doc"
-        Write(filename,txtIntro);
-        whichIntro = "Custom Introduction"
-        whichfile = "IntroStatus.doc"
-        Write(whichfile,whichIntro)
-
-        filename = "AdminIntro.doc"
-        content = GetInfo(filename)
-        msg = "applied!"
-
-        #print(content)
         
-        return render_template("AdminIntro.html",error=msg,whichIntro=whichIntro,content=content);
+        if(txtIntro1 != ""):
+            Intro.append(txtIntro1)
+        if(txtIntro2 != ""):
+            Intro.append(txtIntro2)
+        if(txtIntro3 != ""):
+            Intro.append(txtIntro3)
+
+        lenIntro = len(Intro)
+        if(lenIntro == 1):
+            Write(filename,Intro[0]+"^")
+        else:
+            Write(filename,Intro[0]+"^")
+            for i in range(0,lenIntro-1):
+                Append(filename,Intro[i+1]);
+
+        return DisplayIntro();
 
 def Write(file,info):
     adminfile = open(file,"w");
     adminfile.write(info);
-    print(info)
     adminfile.close();
+        
+def GetItems(name):
+    file = open(name, "r+")
+    fileitems = file.read().split("^");
+    file.close()
+    return fileitems
 
+@app.route("/ApplyCustom")
+def ApplyCustom():
+    global previewerror
+    previewerror = ""
+    whichIntro = CheckIntroStatus();
+    ifempty = GetInforamtion("AdminIntro.doc")
+    if(ifempty == ""):
+        previewerror = "Please enter your custom Introduction and preview before you click on apply"
+        return render_template("AdminIntro.html",previewerror=previewerror,whichIntro=whichIntro);
+    else:
+        previewerror = "Applied!"
+        whichIntro = "Custom Introduction"
+        whichfile = "IntroStatus.doc"
+        Write(whichfile,whichIntro)
+        return DisplayIntro();
+
+############### Admin Intro Default ###############
 @app.route("/ApplyDefault", methods=["POST"])
 def ApplyDefault():
+    global previewerror
+    previewerror = ""
     whichfile = "IntroStatus.doc"
     whichIntro = "Default Introduction(shown below)"
     Write(whichfile,whichIntro)
 
-    filename = "AdminIntro.doc"
-    content = GetInfo(filename)
-        
-    return render_template("AdminIntro.html",whichIntro=whichIntro,content=content);
+    return CheckDisplayIntro();
+
+@app.route("/DeleteCustomIntro")
+def DeleteCustomIntro():
+    global previewerror
+    previewerror = "Custom Intro is Deleted!"
+    
+    whichfile = "AdminIntro.doc"
+    whichIntro = ""
+    Write(whichfile,whichIntro)
+    
+    whichfile = "IntroStatus.doc"
+    whichIntro = "Default Introduction(shown below)"
+    Write(whichfile,whichIntro)
+
+    return CheckDisplayIntro();
 
 if __name__ == "__main__":
     app.run()
