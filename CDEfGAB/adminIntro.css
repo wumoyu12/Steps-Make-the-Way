@@ -35,7 +35,7 @@ td[id="logo"], td[id="logout"]
     padding: 10px;
 }
 
-button[id="btnlogout"],button[id="btnapply"],[id="btnapplydefualt"],[id="btndelete"]
+button[id="btnlogout"],[id="btnpreview"],[id="btnapply"],[id="btnapplydefualt"],[id="btndelete"]
 {
     background-color: #AC0A0B;
     color: white;
@@ -57,7 +57,7 @@ button[id="btnlogout"]:hover
     transform: scale(1.05);
 }
 
-button[id="btnapply"],[id="btnapplydefualt"]
+button[id="btnpreview"],[id="btnapply"],[id="btnapplydefualt"]
 {
     background-color: green;
     height: 50px;
@@ -94,9 +94,8 @@ img[id="displayimage"]
     transition: transform 0.3s;
 }
 
-textarea[id="txtIntro"]
+input[id="txtIntro1"],[id="txtIntro2"],[id="txtIntro3"]
 {
-	height: 300px;
 	width: 100%;
 	margin: 0 auto;
 	font-family: Arial;
@@ -109,9 +108,3 @@ td[id="errormsg"]
     color: red;
 }
 
-table,th,td
-{
-	margin: auto;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
