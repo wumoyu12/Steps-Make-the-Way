@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<title>Admin Donation Product</title>
+		<link rel="stylesheet" href="/static/products.css">
+		<script src="\static\AdminProduct.js"></script>
+	</head>
+	<body>
+		<header>
+			<table id="title" style="width:100%">
+				<tr>
+					<td id="logo"><img id="displayimage" src="/static/logo.jpg" height="120px" width="120px"></img></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+		</header>
+		<label id="lblwlcmsg"><strong>Edit the Donation Products information here!</strong></label>
+		
+		<div id="divAdminProducts" style="margin-top: 20px;">
+			<table width="100%">
+				<tr>
+					<td id="Welcome">
+						<label id="lblwlcmsg">Profits from donation products go directly to hospitals.</label><br>
+						<label id="lblwlcmsg">Please ensure product listing reflects care and supports our mission to help those in need!</label>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<form action="/AdminProduct" method="post" id="ProductForm">
+			<div id="items" style="margin-top: 20px;">
+            	<table style="width:90%" id="tblitems">	
+					<tr>
+						<th style="font-size:30px; width:40%">Image</th>
+                        <th colspan="2" style="font-size:30px; width:60%">Product Information</th>
+					</tr>
+                    <tr>
+						<td>
+							<table style="margin: 0 auto;">
+								<tr>
+									<td id="img" style="vertical-align: top;"><select id="Selectimg" name="Selectimg">
+											<option value="DefaultProduct.jpg">Default Product</option>
+											<option value="Clothing.jpg">Clothing</option>
+											<option value="Books.jpg">Books</option>
+											<option value="Toys.jpg">Toys</option>
+											<option value="HouseholdGoods.jpg">Household Goods</option>
+										</select>
+									</td>
+									<td id="img"><img id="productimg" src="/static/DefaultProduct.jpg" width="97px"></td>
+									<td id="img" style="vertical-align: bottom;"><button id="btnview" type="button">Change Image</button></td>
+								</tr>
+							</table>
+						</td>
+						
+                        <td>
+							<table style="margin: 0 auto;">
+								<tr>
+									<td id="productname"><label id="lblproductname">Product Name:</label></td>
+									<td id="productname"><input id="txtproductname" name="txtproductname"></input></td>
+								</tr>
+								<tr>
+									<td id="productprice"><label id="lblproductprice">Product Price: $</label></td>
+									<td id="productprice"><input id="txtproductprice" name="txtproductprice"></input></td>
+								</tr>
+								<tr>
+									<td id="description"><label id="lbldescription">Description:</label></td>
+									<td id="description"><input id="txtdescription" name="txtdescription"></input></td>
+								</tr>
+							</table>
+						</td>
+						<td id="add" style="vertical-align:bottom;"><button type="button" id="btnadd">Add</button></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="displayitems" style="margin-top: 20px;">
+				<table style="width:90%" id="tbaddedinfo">
+					<tr>
+						{% for header in headings %}
+							<th style="width:25%">{{header}}</th>
+						{% endfor %}
+					</tr>
+					
+					{% for row in data %}
+					<tr>
+						
+						{% for cell in row %}
+							{% if cell.endswith('.jpg')%}
+								<td><img src="{{ url_for('static', filename=cell) }}" width="80px"></td>
+							{% else %}
+								<td>{{cell}}</td>
+							{% endif %}
+						{% endfor %}
+
+					</tr>
+					{% endfor %}
+				</table>
+				<table style="width:90%" id="tblRemove">
+					<tr>
+						<td style="text-align:center">
+							<label>{{amsg}}</label>
+					</tr>
+					<tr>
+						</td>
+						<td style="text-align:left">
+							<button id="btnDelete" type="button" onclick="window.location.href='/'">Delete Everything</button><br><br>
+							<label>Things will be deleted immediately after you click on delete!!! <strong>No chance to regret!!!</strong></label><br>
+							<label>{{msg}}</label>
+						</td>
+					</tr>
+				</table>
+			</div>
+	</body>
+</html>
