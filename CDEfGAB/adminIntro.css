@@ -72,7 +72,7 @@ button[id="btndelete"]
     font-size: 15px;
 }
 
-div[id="information"],[id="defaultIntro"]
+div[id="information"],[id="defaultIntro"],[id="divUserIntro"]
 {
     background-color: #f3f7fc;
     border-radius: 15px;
@@ -108,3 +108,9 @@ td[id="errormsg"]
     color: red;
 }
 
+img[id="imgintroBG"]
+{
+	max-width: 1200px;
+	height: auto;  
+	width: 100%
+}
