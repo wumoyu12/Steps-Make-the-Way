@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>User Intro</title>
+		<link rel="stylesheet" href="/static/Intro.css">
+	</head>
+	<body>
+		<header>
+			<table id="title" style="width:100%">
+				<tr>
+					<td id="logo"><img id="displayimage" src="/static/logo.jpg" height="120px" width="120px"></img></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+		</header>
+		<label id="lblwlcmsg"><strong>Who We Are?!</strong></label>
+		
+		<div id="divUserIntro">
+			<table width="100%">
+				<tr>
+					<td id="content" colspan="2">
+						{% if ifDefalut %}
+							<p>{{ content1 }}</p>
+							<p>{{ content2 }}</p>
+							<p>{{ content3 }}</p>
+						{% else %}
+							<p>Welcome to <strong>Steps Make the Ways</strong> – Where Compassion Meets Action.</p>
+							<p>At Steps Make the Ways, we believe in the power of people to create meaningful change. As a volunteer-driven organization, our mission is to connect passionate individuals with opportunities that make a real difference in communities near and far.</p>
+							<p>Explore our site to learn more about our causes, meet our dedicated volunteers, and discover how you can get involved. Together, we can build stronger, more compassionate communities—one act of kindness at a time.</p>
+						</td>
+						{% endif %}
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="divUserIntro" style="margin-top: 20px;">
+			<table id="title" style="width:100%">
+				<tr>
+					<td style="text-align:center;" id="introBG"><img id="imgintroBG" src="/static/IntroBG.jpg"></img></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
