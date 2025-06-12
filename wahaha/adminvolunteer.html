@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Admin - Volunteer Management</title>
+    <link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <table style="width:100%">
+            <tr>
+                <td><button onclick="window.location.href='/AdminHome'">Back to Admin Home</button></td>
+                <th width="90%">Volunteer Management</th>
+                <td><button onclick="window.location.href='/'">Log out</button></td>
+            </tr>
+        </table>
+    </header>
+
+    <div style="margin:20px;">
+        <h2>All Registered Volunteers</h2>
+        
+        {% if volunteers|length == 0 %}
+            <p>No volunteers have registered yet.</p>
+        {% else %}
+            <table border="1" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th style="padding:8px;">ID</th>
+                    <th style="padding:8px;">First Name</th>
+                    <th style="padding:8px;">Last Name</th>
+                    <th style="padding:8px;">Birth Date</th>
+                    <th style="padding:8px;">Gender</th>
+                </tr>
+                {% for volunteer in volunteers %}
+                <tr>
+                    <td style="padding:8px; text-align:center;">{{ volunteer.id }}</td>
+                    <td style="padding:8px;">{{ volunteer.firstname }}</td>
+                    <td style="padding:8px;">{{ volunteer.lastname }}</td>
+                    <td style="padding:8px; text-align:center;">{{ volunteer.birthdate }}</td>
+                    <td style="padding:8px; text-align:center;">{{ volunteer.gender }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
