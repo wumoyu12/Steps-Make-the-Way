@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Events</title>
+    <link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <table width="100%">
+            <tr>
+                <td><button onclick="window.location.href='/UserHome'">Back Home</button></td>
+                <th width="90%">Steps Make the Way</th>
+                <td><button onclick="window.location.href='/'">Log out</button></td>
+            </tr>
+        </table>
+    </header>
+
+    <h2>All Events</h2>
+    
+    <table border="1" width="100%">
+        {% for event in events %}
+        <tr>
+            <th colspan="2">{{ event[0] }}</th>
+        </tr>
+        <tr>
+            <td>Place:</td>
+            <td>{{ event[1] }}</td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td>{{ event[2] }}</td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td>{{ event[3] }} to {{ event[4] }}</td>
+        </tr>
+        <tr>
+            <td>Details:</td>
+            <td>{{ event[5] }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <form action="/RegisterForEvent" method="POST">
+                    <input type="hidden" name="event_name" value="{{ event[0] }}">
+                    <input type="email" name="user_email" placeholder="Enter your email" required>
+                    <button type="submit">Register for this event</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><br></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
