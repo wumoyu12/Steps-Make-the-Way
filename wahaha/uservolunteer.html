@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Volunteer</title>
+    <link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+    <script src="/static/UserVolunteer.js"></script>
+</head>
+<body>
+    <div id="title">
+        <h1>Volunteer Registration</h1>
+    </div>
+
+    <input type="hidden" id="usermsg" value="{{ usermsg }}">
+
+    <div id="registrationform" style="display:none;">
+        <form id="VolunteerForm" action="/RegisterVolunteer" method="POST">
+            <table>
+                <tr>
+                    <td><label>First Name:</label></td>
+                    <td><input type="text" id="txtfirstname" name="txtfirstname"></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name:</label></td>
+                    <td><input type="text" id="txtlastname" name="txtlastname"></td>
+                </tr>
+                <tr>
+                    <td><label>Birth Date:</label></td>
+                    <td><input type="date" id="txtbirthdate" name="txtbirthdate"></td>
+                </tr>
+                <tr>
+                    <td><label>Gender:</label></td>
+                    <td>
+                        <select id="gender" name="gender">
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" id="btnsubmit">Submit</button>
+        </form>
+        {% if error %}
+        <p style="color:red">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <div id="volunteerinfo" style="display:none;">
+        <h2>My Volunteer Information</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+            </tr>
+            <tr>
+                <td>{{ volunteerid }}</td>
+                <td>{{ firstname }}</td>
+                <td>{{ lastname }}</td>
+                <td>{{ dob }}</td>
+                <td>{{ gender }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
