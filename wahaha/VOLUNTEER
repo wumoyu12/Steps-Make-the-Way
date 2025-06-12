@@ -1,0 +1,113 @@
+<html>
+<head>
+    <title>Admin - Volunteer Management</title>
+    <link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <table style="width:100%">
+            <tr>
+                <td><button onclick="window.location.href='/AdminHome'">Back to Admin Home</button></td>
+                <th width="90%">Volunteer Management</th>
+                <td><button onclick="window.location.href='/'">Log out</button></td>
+            </tr>
+        </table>
+    </header>
+
+    <div style="margin:20px;">
+        <h2>All Registered Volunteers</h2>
+        
+        {% if volunteers|length == 0 %}
+            <p>No volunteers have registered yet.</p>
+        {% else %}
+            <table border="1" style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <th style="padding:8px;">ID</th>
+                    <th style="padding:8px;">First Name</th>
+                    <th style="padding:8px;">Last Name</th>
+                    <th style="padding:8px;">Birth Date</th>
+                    <th style="padding:8px;">Gender</th>
+                </tr>
+                {% for volunteer in volunteers %}
+                <tr>
+                    <td style="padding:8px; text-align:center;">{{ volunteer.id }}</td>
+                    <td style="padding:8px;">{{ volunteer.firstname }}</td>
+                    <td style="padding:8px;">{{ volunteer.lastname }}</td>
+                    <td style="padding:8px; text-align:center;">{{ volunteer.birthdate }}</td>
+                    <td style="padding:8px; text-align:center;">{{ volunteer.gender }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+<html>
+<head>
+    <title>Volunteer</title>
+    <link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+    <script src="/static/UserVolunteer.js"></script>
+</head>
+<body>
+    <div id="title">
+        <h1>Volunteer Registration</h1>
+    </div>
+
+    <input type="hidden" id="usermsg" value="{{ usermsg }}">
+
+    <div id="registrationform" style="display:none;">
+        <form id="VolunteerForm" action="/RegisterVolunteer" method="POST">
+            <table>
+                <tr>
+                    <td><label>First Name:</label></td>
+                    <td><input type="text" id="txtfirstname" name="txtfirstname"></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name:</label></td>
+                    <td><input type="text" id="txtlastname" name="txtlastname"></td>
+                </tr>
+                <tr>
+                    <td><label>Birth Date:</label></td>
+                    <td><input type="date" id="txtbirthdate" name="txtbirthdate"></td>
+                </tr>
+                <tr>
+                    <td><label>Gender:</label></td>
+                    <td>
+                        <select id="gender" name="gender">
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" id="btnsubmit">Submit</button>
+        </form>
+        {% if error %}
+        <p style="color:red">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <div id="volunteerinfo" style="display:none;">
+        <h2>My Volunteer Information</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+            </tr>
+            <tr>
+                <td>{{ volunteerid }}</td>
+                <td>{{ firstname }}</td>
+                <td>{{ lastname }}</td>
+                <td>{{ dob }}</td>
+                <td>{{ gender }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
