@@ -12,5 +12,5 @@ Users can create accounts, join the organization, explore available events, and 
 
 - **code** – source code for demonstration(HTML, CSS, JavaScript, Flask)
 - **images** – visual assets used throughout the website (including some custom designed elements such as logos)
-- **docs** – supporting documents (flowchart, storyboard, test plan)
+- **docs** – project documentation (flowchart)
 - **archive** – downloadable ZIP version of the project
