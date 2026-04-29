@@ -1,0 +1,137 @@
+body
+{
+    font-family: Arial;
+    background-color: #7AA0D2;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+header
+{
+    margin-bottom: 30px;
+}
+
+label[id="lblwlcmsg"]
+{
+    font-size: 27px;
+    font-family: roboto;
+    color: #222b6b;
+    display: block;
+}
+
+th[id="thSMTW"]
+{
+    color: #F3EBE0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 50px;
+    letter-spacing: 2px;
+}
+
+td[id="BackHome"], [id="logout"],[id="cart"]
+{
+    padding: 10px;
+}
+
+button[id="btnhome"],[id="btnlogout"],[id="btnview"],[id="btnadd"],[id="btnDelete"],[id="btncart"],[id="btnCheckOut"]
+{
+    background-color: #AC0A0B;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    height: 60px;
+    width: 120px;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button[id="btnlogout"]:hover
+{
+    background-color: #8a090a;
+    transform: scale(1.05);
+}
+
+button[id="btnhome"]:hover
+{
+    background-color: #027C7E;
+	transform: scale(1.05);
+}
+
+button[id="btnview"],[id="btnadd"],[id="btnCheckOut"]
+{
+    background-color: #698a65;
+}
+
+button[id="btnhome"]
+{
+	background-color: #09A8AB;
+}
+
+button[id="btncart"]
+{
+	background-color: #09A8AB;
+	width: 160px;
+}
+
+div[id="divProducts"],[id="items"],[id="displayitems"],[id="purchaseInfo"]
+{
+    background-color: #f3f7fc;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+div[id="purchaseInfo"] 
+{
+    position: fixed;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #f3f7fc;
+}
+
+img[id="displayimage"],[id="productimg"]
+{
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+td[id="errormsg"]
+{
+    color: red;
+}
+
+td[id="img"]
+{
+    padding:7px;
+}
+
+img[id="imgintroBG"]
+{
+	max-width: 1200px;
+	height: auto;  
+	width: 100%
+}
+
+select,input 
+{
+  padding: 8px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: 1px solid #b39b69;
+  background-color: #fcfaf0;
+}
+
+td
+{
+	text-align:center;
+}

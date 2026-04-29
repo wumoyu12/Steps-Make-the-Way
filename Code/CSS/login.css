@@ -1,0 +1,119 @@
+body
+{
+    font-family: Arial;
+    background-color: #7AA0D2;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1
+{
+    color: #FFFDF8;
+    margin-bottom: 30px;
+    
+}
+
+div[id="container"]
+{
+    display: flex;
+    width: 732px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+div[id="left"]
+{
+    width: 332px;
+    padding: 20px;
+    text-align: center;
+}
+
+div[id="right"]
+{
+    width: 400px;
+    padding: 20px;
+}
+
+div[id="login"], div[id="signup"]
+{
+    background-color: white;
+    width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+table
+{
+    width: 100%;
+}
+
+td
+{
+    padding: 8px;
+}
+
+input, select
+{
+    padding: 10px;
+    border: 1px solid lightblue;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f7fafc;
+}
+
+button
+{
+    background-color: #4a6fc7;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover
+{
+    background-color: #3a5bb7;
+}
+
+a
+{
+    color: #4a6fc7;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+a:hover
+{
+    color: #3a5bb7;
+    text-decoration: underline;
+}
+
+label
+{
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+td[id="errormsg"]
+{
+    color: red;
+}
+
+input
+{
+    width:190px;
+}
+
+select
+{
+    width:100px;
+}
