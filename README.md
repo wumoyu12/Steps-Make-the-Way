@@ -1,4 +1,4 @@
-This is a simulated website created for a non-profit volunteering organization.<br>
-Admin will be able to add organization intro info, volunteering events, and charitable products info.<br>
-Users will be able to create accounts and become members of organizations, as well as browse info, participate in events, and purchase products<br>
+This website is created for a non-profit volunteering organization.<br>
+It allows administrators to manage organization information, create volunteering events, and list charitable products.<br>
+Users can create accounts, join the organization, explore available events, and support causes by participating or making purchases.<br>
 Built with: Python Flask, HTML, CSS, and JavaScript
