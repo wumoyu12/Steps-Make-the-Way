@@ -10,7 +10,7 @@ Users can create accounts, join the organization, explore available events, and 
 
 ## Project Structure
 
-- **code/** – core website files (HTML, CSS, JavaScript, Flask)
+- **code/** – source code for demonstration(HTML, CSS, JavaScript, Flask)
 - **images/** – images that are used throughout the website
 - **docs/** – supporting documents (flowchart, storyboard, test plan)
 - **archive/** – downloadable ZIP version of the project
