@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>Shopping Cart</title>
+		<link rel="stylesheet" href="\static\products.css">
+	</head>
+
+	<body>
+		<form action="/cartinfo" method="post" id="CartForm">
+            <br><br>
+			<table style="width:90%; margin: 0 auto;">
+				<tr>
+					<td id="cart"><img id="displayimage" src="/static/cart.jpg" height="120px" width="120px"></td>
+					<th id="thSMTW" width="90%">Shopping Cart!</th>
+					<td id="BackHome"><button type="button" id="btnhome" onclick="window.location.href='/UserHome'">Back Home</button></td>
+				</tr>
+			</table>
+            <br><br><br><br>
+            <div id="items">
+            	
+				<table style="width:90%;margin:auto" id="tblCart">
+					<tr>
+						{% for header in headings %}
+							<th style="width:20%; font-size:23px">{{header}}</th>
+						{% endfor %}
+					</tr>
+					
+					{% for row in data %}
+					<tr>
+						
+						{% for cell in row %}
+							{% if cell.endswith('.jpg')%}
+								<td><img src="{{ url_for('static', filename=cell) }}" width="80px"></td>
+							{% else %}
+								<td>{{cell}}</td>
+							{% endif %}
+						{% endfor %}
+
+					</tr>
+					{% endfor %}
+					<tr>
+						<td colspan= "5" style="text-align:right"><h4>Total Price:$ {{pricetotal}}</h4></td>
+					</tr>
+				</table>
+				<table style="width:90%;margin:auto" id="tblViewReceipt">
+					<tr>
+						<td style="text-align:right;vertical-align: top;">
+							<button id="btnDelete" type="button" onclick="window.location.href='/delete'">Delete Everything</button>
+							<button id="btnCheckOut" type="button" onclick="window.location.href='/viewreceipt'">Check Out</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:right">
+							<label>Things will be deleted immediately after you click on delete!!! No chance to regret!!!</label>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</body>
+</html>
+

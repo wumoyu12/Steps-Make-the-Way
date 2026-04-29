@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>Events</title>
+	<link rel="stylesheet" href="/static/Event.css">
+    <link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <table width="100%">
+            <tr>
+                <td id="BackHome"><button type="button" id="btnhome" onclick="window.location.href='/UserHome'">Back Home</button></td>
+                <th id="thSMTW" width="90%">Steps Make the Way</th>
+                <td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+            </tr>
+        </table>
+    </header>
+	
+	<h2>All Events</h2>
+	<div id="WelcomeMSG">
+		<table width="100%">
+			<tr>
+				<td id="Welcome">
+					<label id="lblwlcmsg">Join us for exciting events -- connect, learn, and make an impact!</label><br>
+					<label id="lblwlcmsg">Join events by sending an email to <strong>{{email}}</strong>!</label>
+				</td>
+			</tr>
+		</table>
+		<table width="100%">
+			<tr>
+				<td id="Help">
+					<details>
+						<summary>What information do you need to include in the email?</summary>
+						<p>1. The event name</p>
+						<p>2. Your full name</p>
+						<p>3. Your volunteer ID(You will receive this after registering as a volunteer. Click the button below if you haven’t registered yet.)</p>
+						<p><button id="btnUserVolunteer" type="button" onclick="window.location.href='/UserVolunteer'">Click Here!</button></p>
+					</details>
+				</td>
+			</tr>
+		</table>
+	</div>
+    
+    <table border="1" width="100%">
+        {% for event in events %}
+        <tr>
+            <th colspan="2">{{ event[0] }}</th>
+        </tr>
+        <tr>
+            <td>Place:</td>
+            <td>{{ event[1] }}</td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td>{{ event[2] }}</td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td>{{ event[3] }} to {{ event[4] }}</td>
+        </tr>
+        <tr>
+            <td>Details:</td>
+            <td>{{ event[5] }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><br></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>User Donation Product</title>
+		<link rel="stylesheet" href="/static/products.css">
+		<script src="\static\UserProduct.js"></script>
+	</head>
+	<body>
+		<header>
+			<table id="title" style="width:100%">
+				<tr>
+					<td id="BackHome"><button type="button" id="btnhome" onclick="window.location.href='/UserHome'">Back Home</button></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+		</header>
+		
+		<div id="divProducts" style="margin-top: 20px;">
+			<table width="100%">
+				<tr>
+					<td id="Welcome">
+						<label id="lblwlcmsg">100% of our profits are donated to hospitals to support patients, families, and frontline caregivers.</label><br>
+						<label id="lblwlcmsg">Together, we are spreading hope.</label>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<form action="/UserProductForm" method="post" id="theUserProductForm">
+			<div id="items" style="margin-top: 20px; margin-bottom: 147px;"">
+            	<table style="width:90%" id="tbRetrieveInfo">
+					<tr>
+						{% for header in headings %}
+							<th style="width:25%; font-size:23px">{{header}}</th>
+						{% endfor %}
+					</tr>
+					
+					{% for row in data %}
+					<tr>
+						
+						{% for cell in row %}
+							{% if cell.endswith('.jpg')%}
+								<td><img src="{{ url_for('static', filename=cell) }}" width="80px"></td>
+							{% else %}
+								<td>{{cell}}</td>
+							{% endif %}
+						{% endfor %}
+
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			
+			<div id="purchaseInfo">
+				<table style="width:90%;margin: 0 auto;" id="tblpurchaseInfo">
+					<tr>
+						<td id="purchase" style="width:20%;">
+							Select Product<br><br>
+							<select id="productdropdown" name="productdropdown" style="width:120px;height:37px">
+								{% for product in listofproducts %}
+									<option value="{{ product }}">{{ product }}</option>
+								{% endfor %}
+							</select>
+						</td>
+						<td id="purchase" style="width:20%;">
+							Quantity<br><br>
+							<input type="number" value="1" name="howmany" id="howmany" style="width:70px;height:37px">
+						</td>
+						<td id="purchase" style="width:20%;">
+							<b>Your Selection</b><br>
+							<label id="lblname">Product: {{theproduct}}</label><br>
+							<label id="lblnum">Quantity: {{thequantity}}</label><br>
+							<label id="lblprice">Price: ${{theprice}}</label><br>
+						</td>
+						<td id="purchase" style="width:20%">
+							<button id="btnadd" type="button">Add To Cart</button>
+						</td>
+						<td id="purchase" style="width:20%">
+							<button id="btncart" type="button" onclick="window.location.href='/cart'">My Shopping Cart</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+	</body>
+</html>

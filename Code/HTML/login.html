@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" href="/static/login.css">
+		<script src="\static\login.js"></script>
+	</head>
+	<body>
+		<h1>Steps Make the Way</h1>
+		
+		<div id="container">
+			<div id="left">
+				<table>
+					<tr>
+						<td>
+							<h2>Join Us Here!<img src="/static/loginarrow.gif" alt="Arrow" style="height:40px; width:80px;"></img></h2>
+						</td>
+					</tr>
+					<tr>
+						<td>Every Step Matters，</td>
+					</tr>
+					<tr>
+						<td style="text-align: right;">Welcome to Your Journey！</td>
+					</tr>					
+					<tr>
+						<td><img src="/static/welcome.jpg" alt="WelcomeImage" style="width:100%; max-width:300px;"></img></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="right">
+				<div id="login">
+					<form action="/login" method="POST">
+						<input type="hidden" id="usermsg" name="usermsg" value="{{ usermsg }}">
+						<table>
+							<tr>
+								<td colspan="2"><h2>Log In</h2>
+							</tr>
+							<tr>
+								<td><label id="lblusername">Username:</label>
+								<td><input type="text" id="txtusername" name="txtusername"></input>
+							</tr>
+							<tr>
+								<td><label id="lblpassword">Password:</label>
+								<td><input type="password" id="txtpassword" name="txtpassword"></input>
+							</tr>
+							<tr>
+									<td><label for="lblusertype">Login as:</label></td>
+									<td>
+										<select id="usertype" name="usertype">
+											<option value="" disabled selected>Select</option>
+											<option value="user">User</option>
+											<option value="admin">Admin</option>
+										</select>
+									</td>
+							</tr>
+							<tr>
+								<td id="errormsg" colspan="2">{{ error }}</td>
+							</tr>
+							<tr>
+								<td colspan="2"><button>Login</button>
+							</tr>
+							<tr>
+								<td colspan="2">Don't have an account?<a href="#" id="showsignup">Sign Up</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				
+				<div id="signup" style="display:none;">
+					<form action="/signup" method="POST">
+						<table>
+							<tr>
+								<td colspan="2"><h2>Sign Up for User</h2></td>
+							</tr>
+							<tr>
+								<td><label id="lblsignupusername">Username:</label></td>
+								<td><input type="text" id="txtsignupusername" name="txtsignupusername"></input></td>
+							</tr>
+							<tr>
+								<td><label id="lblsignuppassword">Password:</label></td>
+								<td><input type="password" id="txtsignuppassword" name="txtsignuppassword"></input></td>
+							</tr>
+								<td><label id="lblsignuprpassword">Repeat Password:</label></td>
+								<td><input type="password" id="txtsignuprpassword" name="txtsignuprpassword"></input></td>
+							</tr>
+							<tr>
+								<td id="errormsg" colspan="2">{{ error }}</td>
+							</tr>
+							<tr>
+								<td colspan="2"><button>Create Account</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">Already have an account?<a href="#" id="showlogin">Log in</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Event</title>
+		<link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+		<link rel="stylesheet" href="/static/Event.css">
+	</head>
+	<body>
+		<header>
+			<table id="title" style="width:100%">
+				<tr>
+					<td id="BackHome"><button type="button" id="btnhome" onclick="window.location.href='/AdminHome'">Back Home</button></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnchangeemail" onclick="window.location.href='/AdminEmail'">Change Contact Info</button></td>
+				</tr>
+			</table>
+		</header>
+
+		<div id="AllEvents" style="text-align:center">
+			<h2>Events</h2>
+			
+			<div id="divevents">
+				{% if EventName|length == 0 %}
+					<p style="text-align:center">No events found.</p>
+				{% else %}
+					<table border="1" style="width:100%; border-collapse:collapse;">
+						<tr>
+							<th>Event Name</th>
+							<th>Place</th>
+							<th>Date</th>
+							<th>Start Time</th>
+							<th>End Time</th>
+							<th>Details</th>
+						</tr>
+						{% for event in EventName %}
+						<tr>
+							<td>{{ event.name }}</td>
+							<td>{{ event.place }}</td>
+							<td>{{ event.date }}</td>
+							<td>{{ event.starttime }}</td>
+							<td>{{ event.endtime }}</td>
+							<td>{{ event.details }}</td>
+						</tr>
+						{% endfor %}
+					</table>
+				{% endif %}
+			</div>
+		</div>
+		<button type="button" id="btnaddevent" onclick="window.location.href='/AdminEditEvents'">Add Event</button>
+		<button type="button" id="btnDelete" onclick="window.location.href='/AdminDeleteEvents'">Delete All Events</button><br><br>
+		<label style="color:#6e302b">Things will be deleted immediately after you click on delete!!! <strong>No chance to regret!!!</strong></label><br>
+		<label style="color:#6e302b"><strong>{{msg3}}<strong></label>
+	</body>
+</html>

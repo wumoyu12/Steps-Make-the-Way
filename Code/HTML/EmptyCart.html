@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Empty Cart</title>
+		<link rel="stylesheet" href="\static\products.css">
+	</head>
+
+	<body>
+		<form action="/cart2info" method="post" id="Cart2Form">
+            <br><br>
+			<table style="width:90%; margin: 0 auto;">
+				<tr>
+					<td id="cart"><img id="displayimage" src="/static/cart.jpg" height="120px" width="120px"></td>
+					<th id="thSMTW" width="90%">Shopping Cart!</th>
+					<td id="BackHome"><button type="button" id="btnhome" onclick="window.location.href='/UserHome'">Back Home</button></td>
+				</tr>
+			</table>
+            <br><br><br><br>
+            <div style="text-align:center" id="items">
+            	<label style="font-size:40px">Nothing is here yet... :(</label><br><br>
+				<button id="btnhome" type="button" onclick="window.location.href='/UserHome'">Home</button>
+			</div>
+		</form>
+	</body>
+</html>
+

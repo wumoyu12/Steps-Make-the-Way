@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Edit Event</title>
+    <link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/Event.css">
+    <script src="/static/AdminEditEvents.js"></script>
+</head>
+<body>
+    <header>
+        <table id="title" style="width:100%">
+            <tr>
+                <td id="back"><button type="button" id="btnhome" onclick="window.location.href='/AdminEvents'">See All Event</button></td>
+                <th id="thSMTW" width="90%">Steps Make the Way</th>
+                <td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+            </tr>
+        </table>
+    </header>
+    
+    <div id="eventform">
+        <form id="EventForm" action="/SaveEvent" method="POST">
+            <table id="eventdetails">
+                <tr>
+                    <td><label id="lbleventname">Event Name:</label></td>
+                    <td><input type="text" id="txteventname" name="txteventname"></td>
+                </tr>
+                
+                <tr>
+                    <td><label id="lbleventplace">Event Place:</label></td>
+                    <td><input type="text" id="txteventplace" name="txteventplace"></td>
+                </tr>
+                  
+                <tr>
+                    <td><label id="lbleventdate">Event Date:</label></td>
+                    <td><input type="date" id="txteventdate" name="txteventdate"></td>
+                </tr>
+                
+                <tr>
+                    <td><label id="lbleventdate">Event Time:</label></td>
+                    <td><input type="time" id="txtstarttime" name="txtstarttime"></td>
+                </tr>
+                
+                <tr>
+                    <td><label id="lbleventdate">End Time:</label></td>
+                    <td><input type="time" id="txtendtime" name="txtendtime"></td>
+                </tr>
+				
+				<tr>
+                    <td><label id="lbleventdetails">Event Details:</label></td>
+                    <td><input type="text" id="txteventdetails" name="txteventdetails"></td>
+                </tr>
+            </table>
+            
+            <button type="button" id="btnsubmit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

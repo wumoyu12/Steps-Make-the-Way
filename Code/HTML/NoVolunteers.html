@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>No Volunteers</title>
+		<link rel="stylesheet" href="/static/products.css">
+	</head>
+
+	<body>
+		<form action="/adminEmpty" method="post" id="EmptyForm">
+            <br><br>
+			<table style="width:90%; margin: 0 auto;">
+				<tr>
+					<td id="logo"><img id="displayimage" src="/static/logo.jpg" height="120px" width="120px"></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+
+            <br><br><br><br>
+            <div style="text-align:center" id="items">
+            	<label style="font-size:40px">Opps, No volunteers signed up yet... :(</label><br><br>
+				<button id="btnhome" type="button" onclick="window.location.href='/AdminHome'">Home</button>
+			</div>
+		</form>
+	</body>
+</html>
+

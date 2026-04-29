@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>Email</title>
+		<link rel="icon" href="/static/logo.jpg" type="image/x-icon">
+		<link rel="stylesheet" href="/static/Event.css">
+		<script src="/static/GetEmail.js"></script>
+	</head>
+	<body>
+		<header>
+			<table id="title" style="width:100%">
+				<tr>
+					<td id="BackHome"><button type="button" id="btnhome" onclick="window.location.href='/AdminHome'">Back Home</button></td>
+					<th id="thSMTW" width="90%">Steps Make the Way</th>
+					<td id="logout"><button type="button" id="btnlogout" onclick="window.location.href='/'">Log out</button></td>
+				</tr>
+			</table>
+		</header>
+
+		<h2>Contact Information</h2>
+		<div id="Email" style="text-align:center">
+			<form id="EmailForm" action="/SubmitEmail" method="POST">
+				<label><strong>Please enter the contact info for the volunteer so they can reach out to sign up for the event!</strong></label>
+				<table style="width:50%;margin: 0 auto">
+					<tr>
+						<td id="email"><label>Enter your email:</label></td>
+						<td id="email"><input type="text" id="txtemail" name="txtemail" style="width:100%"></td>
+					</tr>
+				</table>
+				<table style="width:50%;margin: 0 auto">
+					<tr>
+						<td id="email" style="text-align:right"><button type="button" id="btnsubmit">Submit</button></td>
+					</tr>
+					<tr>
+						<td id="email" style="text-align:center;">Your email: {{email}}</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
